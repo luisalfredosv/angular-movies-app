@@ -1,1 +1,10 @@
-<p>movie-card works!</p>
+<div class="max-w-sm rounded-2xl overflow-hidden shadow-2xl">
+  <div class="w-288 h-403 bg-cover">
+    <a [routerLink]="['/details', movie.id]"
+      ><img
+        class="w-full h-full object-cover"
+        [src]="movie.poster_path | baseurl"
+        [alt]="movie.title"
+    /></a>
+  </div>
+</div>

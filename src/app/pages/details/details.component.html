@@ -1,1 +1,47 @@
-<p>details works!</p>
+<div *ngIf="details$ | async as details" class="container mx-auto px-4">
+  <div class="flex">
+    <div class="w-1/4">
+      <img
+        [src]="details.poster_path | baseurl"
+        alt="Imagen de la película"
+        class="rounded-lg shadow-lg"
+      />
+    </div>
+    <div class="w-3/4 pl-8">
+      <h1 class="text-4xl font-bold mb-4">{{ details.title }}</h1>
+      <p class="text-gray-700 text-justify text-lg mb-4">
+        {{ details.overview }}
+      </p>
+      <div class="mb-4">
+        <button
+          class="px-5 py-2 rounded-lg text-white bg-red-500 hover:bg-red-600"
+        >
+          Reproducir
+        </button>
+        <button
+          class="px-5 py-2 rounded-lg text-white bg-gray-800 hover:bg-gray-900 ml-4"
+        >
+          Mi lista
+        </button>
+      </div>
+      <div class="mb-4 flex flex-wrap items-center">
+        <p class="text-gray-700 mr-2">Género:</p>
+        <span
+          *ngFor="let genre of details.genres"
+          class="bg-gray-800 text-gray-300 rounded-full py-1 px-3 m-1"
+        >
+          {{ genre.name }}
+        </span>
+      </div>
+      <div class="flex flex-wrap items-center">
+        <p class="text-gray-700 mr-2">Idioma:</p>
+        <span
+          *ngFor="let language of details.spoken_languages"
+          class="bg-gray-800 text-gray-300 rounded-full py-1 px-3 m-1"
+        >
+          {{ language.name }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
